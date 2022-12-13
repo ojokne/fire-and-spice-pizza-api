@@ -1,5 +1,8 @@
 # add .env file to gitignore
 .env
 
+# add database to gitignore
+data.sqlite
+
 # add node modules folder to gitignore
 node_modules/
