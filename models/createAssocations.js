@@ -12,12 +12,15 @@ function createAssociations() {
 
   Order.hasMany(OrderedItem, {
     foreignKey: "orderNumber",
-
     onDelete: "CASCADE",
   });
-  OrderedItem.belongsTo(Order);
+  OrderedItem.belongsTo(Order, {
+    foreignKey: "orderNumber",
+  });
 
-  OrderedItem.belongsTo(Item);
+  OrderedItem.belongsTo(Item, {
+    foreignKey: "itemNumber",
+  });
   Item.hasOne(OrderedItem, {
     foreignKey: "itemNumber",
   });
