@@ -13,6 +13,10 @@ const Item = db.sequelize.define("Item", {
     type: DataTypes.STRING,
     allowNull: false,
   },
+  unitCost: {
+    type: DataTypes.FLOAT,
+    allowNull: false,
+  },
 });
 
 module.exports = Item;
