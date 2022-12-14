@@ -12,7 +12,7 @@ const Order = db.sequelize.define("Order", {
     type: DataTypes.BOOLEAN,
   },
   table: DataTypes.INTEGER,
-  timeDelivered: {
+  deliveredAt: {
     type: DataTypes.DATE,
     allowNull: true,
   },
