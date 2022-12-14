@@ -1,3 +1,8 @@
+require("dotenv").config();
+const express = require("express");
+const cors = require("cors");
+const bodyParser = require("body-parser");
+
 // importing models
 const db = require("./db");
 const Item = require("./models/Item");
@@ -6,7 +11,24 @@ const Role = require("./models/Role");
 const Order = require("./models/Order");
 const OrderedItem = require("./models/OrderedItem");
 const createAssociations = require("./models/createAssocations");
-db.sequelize.sync({ force: true });
+
+// port
+const PORT = 5000 || process.env.PORT;
+const app = express();
+
+// middleware
+app.use(cors());
+app.use(bodyParser.json());
+
+// run server
+app.listen(PORT, (err) => {
+  if (err) {
+    console.log(err);
+  } else {
+    console.log(`Server running on port ${PORT}`);
+  }
+});
+// db.sequelize.sync({ force: true });
 // async function create() {
 //   const pizza = await Item.create({
 //     itemNumber: `PIZZA`,
