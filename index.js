@@ -12,6 +12,9 @@ const Order = require("./models/Order");
 const OrderedItem = require("./models/OrderedItem");
 const createAssociations = require("./models/createAssocations");
 
+// import apps
+const user = require("./routes/user/index");
+
 // port
 const PORT = 5000 || process.env.PORT;
 const app = express();
@@ -19,6 +22,9 @@ const app = express();
 // middleware
 app.use(cors());
 app.use(bodyParser.json());
+
+// use app
+app.use("/user", user);
 
 // run server
 app.listen(PORT, (err) => {
