@@ -36,7 +36,7 @@ app.route("/add").post(async (req, res) => {
       } else {
         let role = await Role.findByPk(parseInt(req.body.roleNumber.trim()));
         if (role) {
-          let user = await User.create({
+          await User.create({
             email: req.body.email.trim(),
             firstName: req.body.firstName.trim(),
             middleName: req.body.middleName.trim(),

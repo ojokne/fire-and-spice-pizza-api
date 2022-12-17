@@ -29,7 +29,7 @@ app.route("/add").post(async (req, res) => {
         response_message = "Resource already exists";
         response_code = 5;
       } else {
-        const role = await Role.create({
+        await Role.create({
           roleNumber: parseInt(req.body.roleNumber.trim()),
           roleName: req.body.roleName.trim(),
         });
