@@ -17,7 +17,8 @@ app.route("/:email").delete(async (req, res) => {
     } else {
       const userReturned = await User.findByPk(req.params.email.trim());
       if (userReturned) {
-        await userReturned.destroy(), userReturned.save;
+        await userReturned.destroy();
+        userReturned.save();
       } else {
         response_message = "Not found";
         response_code = 3;
