@@ -28,13 +28,19 @@ app.route("/add").post(async (req, res) => {
       response_message = " populate all fields";
       response_code = 2;
     } else {
-      const user = await User.create({
-        email: req.body.email.trim(),
-        firstName: req.body.firstName.trim(),
-        middleName: req.body.middleName.trim(),
-        lastName: req.body.lastName.trim(),
-        roleNumber: parseInt(req.body.roleNumber.trim()),
-      });
+      let user = await User.findByPk(req.body.email.trim());
+      if (user) {
+        response_message = "Resource already exists";
+        response_code = 5;
+      } else {
+        let user = await User.create({
+          email: req.body.email.trim(),
+          firstName: req.body.firstName.trim(),
+          middleName: req.body.middleName.trim(),
+          lastName: req.body.lastName.trim(),
+          roleNumber: parseInt(req.body.roleNumber.trim()),
+        });
+      }
     }
   }
   res.json({ response_code, response_message });
