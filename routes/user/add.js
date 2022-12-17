@@ -1,5 +1,6 @@
 const express = require("express");
 const db = require("../../db");
+const Role = require("../../models/Role");
 const User = require("../../models/User");
 const app = express.Router();
 
@@ -33,13 +34,20 @@ app.route("/add").post(async (req, res) => {
         response_message = "Resource already exists";
         response_code = 5;
       } else {
-        let user = await User.create({
-          email: req.body.email.trim(),
-          firstName: req.body.firstName.trim(),
-          middleName: req.body.middleName.trim(),
-          lastName: req.body.lastName.trim(),
-          roleNumber: parseInt(req.body.roleNumber.trim()),
-        });
+        let role = await Role.findByPk(parseInt(req.body.roleNumber.trim()));
+        if (role) {
+          let user = await User.create({
+            email: req.body.email.trim(),
+            firstName: req.body.firstName.trim(),
+            middleName: req.body.middleName.trim(),
+            lastName: req.body.lastName.trim(),
+            roleNumber: parseInt(req.body.roleNumber.trim()),
+          });
+        } else {
+          response_message =
+            "Foreign key constraint failed. Role does not exist";
+          response_code = 6;
+        }
       }
     }
   }
