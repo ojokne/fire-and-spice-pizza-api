@@ -22,6 +22,7 @@ const User = db.sequelize.define("User", {
   },
   roleNumber: {
     type: DataTypes.INTEGER,
+    allowNull: true,
   },
   passwordResetCode: {
     type: DataTypes.INTEGER,
