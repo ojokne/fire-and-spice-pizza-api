@@ -4,8 +4,8 @@ const Role = require("../../models/Role");
 const app = express.Router();
 
 app.route("/add").post(async (req, res) => {
-  response_code = 1;
-  response_message = "successfully created";
+  let response_code = 1;
+  let response_message = "successfully created";
   if (
     !(
       req.body.hasOwnProperty("roleNumber") &&

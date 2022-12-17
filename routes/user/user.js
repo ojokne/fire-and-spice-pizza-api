@@ -9,8 +9,8 @@ app.route("/:email").get(async (req, res) => {
   let response_message = "successfully created";
   let user = null;
   if (!req.params.hasOwnProperty("email")) {
-    response_message = " Add all fields";
-    response_code = 0;
+    let response_message = " Add all fields";
+    let response_code = 0;
   } else {
     if (req.params.email.trim().length < 1) {
       response_message = " populate all fields";

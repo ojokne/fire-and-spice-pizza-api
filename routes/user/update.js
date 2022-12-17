@@ -4,8 +4,8 @@ const User = require("../../models/User");
 const app = express.Router();
 
 app.route("/update").put(async (req, res) => {
-  response_code = 4;
-  response_message = "successfully updated";
+  let response_code = 4;
+  let response_message = "successfully updated";
   if (
     !(
       req.body.hasOwnProperty("email") &&
