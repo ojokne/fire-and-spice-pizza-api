@@ -7,7 +7,6 @@ app.route("/:email").get(async (req, res) => {
   let response_code = 1;
   let response_message = "successfully created";
   let user = null;
-  let email = "";
   if (!req.params.hasOwnProperty("email")) {
     response_message = " Add all fields";
     response_code = 0;
@@ -16,8 +15,7 @@ app.route("/:email").get(async (req, res) => {
       response_message = " populate all fields";
       response_code = 2;
     } else {
-      email = req.params.email.trim();
-      const userReturned = await User.findByPk(email);
+      const userReturned = await User.findByPk(req.params.email.trim());
       if (userReturned) {
         user = {
           email: userReturned.email,
