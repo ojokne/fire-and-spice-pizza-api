@@ -8,7 +8,9 @@ function createAssociations() {
   User.belongsTo(Role, {
     foreignKey: "roleNumber",
   });
-  Role.hasOne(User);
+  Role.hasOne(User, {
+    foreignKey: "roleNumber",
+  });
 
   Order.hasMany(OrderedItem, {
     foreignKey: "orderNumber",
