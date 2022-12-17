@@ -1,10 +1,9 @@
 const express = require("express");
 const db = require("../../db");
 const User = require("../../models/User");
-const Role = require("../../models/Role");
 const app = express.Router();
 
-app.route("/add").get(async (req, res) => {
+app.route("/add").post(async (req, res) => {
   response_code = 1;
   response_message = "successfully created";
   if (
