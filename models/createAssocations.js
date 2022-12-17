@@ -10,6 +10,7 @@ function createAssociations() {
   });
   Role.hasOne(User, {
     foreignKey: "roleNumber",
+    onUpdate: "CASCADE",
   });
 
   Order.hasMany(OrderedItem, {
@@ -25,6 +26,7 @@ function createAssociations() {
   });
   Item.hasOne(OrderedItem, {
     foreignKey: "itemNumber",
+    onUpdate: "CASCADE",
   });
 }
 
