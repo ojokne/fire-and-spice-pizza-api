@@ -8,7 +8,7 @@ app.route("/:email").delete(async (req, res) => {
   let response_code = 6;
   let response_message = "successfully deleted";
 
-  const userReturned = await User.findByPk(req.params.email.trim());
+  const userReturned = await User.findByPk(req.params.email);
   if (userReturned) {
     await userReturned.destroy();
     userReturned.save();
