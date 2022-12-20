@@ -16,6 +16,7 @@ const createAssociations = require("./models/createAssocations");
 const user = require("./routes/user/index");
 const role = require("./routes/role/index");
 const item = require("./routes/item/index");
+const order = require("./routes/order");
 
 // port
 const PORT = 5000 || process.env.PORT;
@@ -29,6 +30,7 @@ app.use(bodyParser.json());
 app.use("/user", user);
 app.use("/role", role);
 app.use("/item", item);
+app.use("/order", order);
 
 // run server
 app.listen(PORT, (err) => {
