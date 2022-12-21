@@ -2,6 +2,7 @@ const express = require("express");
 const db = require("../../db");
 const Role = require("../../models/Role");
 const User = require("../../models/User");
+const bcrypt = require("bcrypt");
 const app = express.Router();
 
 app.route("/add").post(async (req, res) => {
@@ -38,13 +39,14 @@ app.route("/add").post(async (req, res) => {
       } else {
         let role = await Role.findByPk(parseInt(req.body.roleNumber.trim()));
         if (role) {
+          const hash = bcrypt.hashSync(req.body.password.trim(), 10);
           await User.create({
             email: req.body.email.trim(),
             firstName: req.body.firstName.trim(),
             middleName: req.body.middleName.trim(),
             lastName: req.body.lastName.trim(),
             roleNumber: parseInt(req.body.roleNumber.trim()),
-            password: req.body.password.trim(),
+            password: hash,
           });
         } else {
           response_message =
