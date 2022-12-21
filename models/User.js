@@ -24,6 +24,10 @@ const User = db.sequelize.define("User", {
     type: DataTypes.INTEGER,
     allowNull: true,
   },
+  password: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
   passwordResetCode: {
     type: DataTypes.INTEGER,
     allowNull: true,
