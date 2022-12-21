@@ -13,7 +13,8 @@ app.route("/add").post(async (req, res) => {
       req.body.hasOwnProperty("firstName") &&
       req.body.hasOwnProperty("middleName") &&
       req.body.hasOwnProperty("lastName") &&
-      req.body.hasOwnProperty("roleNumber")
+      req.body.hasOwnProperty("roleNumber") &&
+      req.body.hasOwnProperty("password")
     )
   ) {
     response_message = " Add all fields";
@@ -24,7 +25,8 @@ app.route("/add").post(async (req, res) => {
       req.body.firstName.trim().length < 1 ||
       req.body.middleName.trim().length < 1 ||
       req.body.lastName.trim().length < 1 ||
-      req.body.roleNumber.trim().length < 1
+      req.body.roleNumber.trim().length < 1 ||
+      req.body.password.trim().length < 1
     ) {
       response_message = " populate all fields";
       response_code = 2;
@@ -42,6 +44,7 @@ app.route("/add").post(async (req, res) => {
             middleName: req.body.middleName.trim(),
             lastName: req.body.lastName.trim(),
             roleNumber: parseInt(req.body.roleNumber.trim()),
+            password: req.body.password.trim(),
           });
         } else {
           response_message =

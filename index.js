@@ -40,6 +40,7 @@ app.listen(PORT, (err) => {
     console.log(`Server running on port ${PORT}`);
   }
 });
+// createAssociations();
 // db.sequelize.sync({ force: true });
 // async function create() {
 //   const pizza = await Item.create({
@@ -48,5 +49,3 @@ app.listen(PORT, (err) => {
 //   });
 // }
 // create();
-
-// createAssociations();
