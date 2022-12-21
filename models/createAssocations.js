@@ -8,7 +8,7 @@ function createAssociations() {
   User.belongsTo(Role, {
     foreignKey: "roleNumber",
   });
-  Role.hasOne(User, {
+  Role.hasMany(User, {
     foreignKey: "roleNumber",
     onUpdate: "CASCADE",
   });
