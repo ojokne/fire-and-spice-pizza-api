@@ -16,7 +16,8 @@ const createAssociations = require("./models/createAssocations");
 const user = require("./routes/user/index");
 const role = require("./routes/role/index");
 const item = require("./routes/item/index");
-const order = require("./routes/order");
+const order = require("./routes/order/index");
+const auth = require("./routes/auth/index");
 
 // port
 const PORT = 5000 || process.env.PORT;
@@ -31,6 +32,7 @@ app.use("/user", user);
 app.use("/role", role);
 app.use("/item", item);
 app.use("/order", order);
+app.use("/auth", auth);
 
 // run server
 app.listen(PORT, (err) => {
