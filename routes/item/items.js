@@ -10,6 +10,7 @@ app.route("/").get(async (req, res) => {
       itemNumber: list[i].itemNumber,
       itemName: list[i].itemName,
       unitCost: list[i].unitCost,
+      picture: list[i].picture,
     };
     items[i] = item;
   }

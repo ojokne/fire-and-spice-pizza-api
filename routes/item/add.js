@@ -10,7 +10,8 @@ app.route("/add").post(async (req, res) => {
     !(
       req.body.hasOwnProperty("itemNumber") &&
       req.body.hasOwnProperty("itemName") &&
-      req.body.hasOwnProperty("unitCost")
+      req.body.hasOwnProperty("unitCost") &&
+      req.body.hasOwnProperty("picture")
     )
   ) {
     response_message = " Add all fields";
@@ -19,7 +20,8 @@ app.route("/add").post(async (req, res) => {
     if (
       req.body.itemNumber.trim().length < 1 ||
       req.body.itemName.trim().length < 1 ||
-      req.body.unitCost.trim().length < 1
+      req.body.unitCost.trim().length < 1 ||
+      req.body.picture.trim().length < 1
     ) {
       response_message = " populate all fields";
       response_code = 2;
@@ -33,6 +35,7 @@ app.route("/add").post(async (req, res) => {
           itemNumber: req.body.itemNumber.trim(),
           itemName: req.body.itemName.trim(),
           unitCost: Number(req.body.unitCost.trim()),
+          picture: req.body.unitCost.trim(),
         });
       }
     }

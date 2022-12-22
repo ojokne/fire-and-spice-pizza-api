@@ -11,6 +11,7 @@ app.route("/:itemNumber").get(async (req, res) => {
       itemNumber: itemReturned.itemNumber,
       itemName: itemReturned.itemName,
       unitCost: itemReturned.unitCost,
+      picture: itemReturned.picture,
     };
   }
 

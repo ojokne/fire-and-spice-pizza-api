@@ -28,6 +28,7 @@ app.route("/update").post(async (req, res) => {
       if (item) {
         item.itemName = req.body.itemName.trim();
         item.unitCost = Number(req.body.unitCost.trim());
+        item.picture = req.body.unitCost.trim();
         item.save();
       } else {
         response_message = "Not found";
