@@ -17,6 +17,10 @@ const Item = db.sequelize.define("Item", {
     type: DataTypes.FLOAT,
     allowNull: false,
   },
+  picture: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
 });
 
 module.exports = Item;
