@@ -18,7 +18,7 @@ app.route("/add").post(async (req, res) => {
       req.body.hasOwnProperty("password")
     )
   ) {
-    response_message = " Add all fields";
+    response_message = "Add all fields";
     response_code = 0;
   } else {
     if (
@@ -29,7 +29,7 @@ app.route("/add").post(async (req, res) => {
       req.body.roleNumber.trim().length < 1 ||
       req.body.password.trim().length < 1
     ) {
-      response_message = " populate all fields";
+      response_message = "populate all fields";
       response_code = 2;
     } else {
       let user = await User.findByPk(req.body.email.trim());
