@@ -1,6 +1,7 @@
 const express = require("express");
 const User = require("../../models/User");
 const jwt = require("jsonwebtoken");
+const brcypt = require("bcrypt");
 const app = express.Router();
 
 app.route("/login").post(async (req, res) => {
@@ -21,12 +22,14 @@ app.route("/login").post(async (req, res) => {
       response_code = 2;
     } else {
       const user = await User.findByPk(req.body.email.trim());
-      if (user) {
+      const password = await brcypt.compare(
+        req.body.password.trim(),
+        user.password
+      );
+      if (user && password) {
         token = jwt.sign({ email: user.email }, process.env.SECRET_KEY);
-        decoded = jwt.verify(token, process.env.SECRET_KEY);
-        console.log(decoded);
       } else {
-        response_message = "Not found";
+        response_message = "Incorrect credentials";
         response_code = 3;
       }
     }
